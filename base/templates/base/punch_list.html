@@ -1,0 +1,26 @@
+<h1>Punchlist</h1>
+{% if request.user.is_authenticated %}
+<p>User: {{request.user}}</p>
+<button type="button"> <a href="{% url 'logout' %}">Logout</a> </button>
+{% else %}
+<button type="button"> <a href="{% url 'login' %}">Login</a> </button>
+{% endif %}
+<hr>
+<button type="button">
+    <a href="{% url 'punch-create' %}">Add Punch</a>
+</button>
+<table>
+    <tr>
+        <th>Item</th>
+    </tr>
+    {% for punch in punches %}
+    <tr>
+        <td>{{punch.title}}</td>
+        <td><a href="{% url 'punch' punch.id %}">View</a> </td>
+        <td><a href="{% url 'punch-update' punch.id %}">Edit</a> </td>
+        <td><a href="{% url 'punch-delete' punch.id %}">Delete</a> </td>
+    </tr>
+    {% empty %}
+    <h3>No Punch Item<h3>
+    {% endfor %}
+</table>

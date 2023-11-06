@@ -1,0 +1,23 @@
+<h1>Punch: {{ punch }}</h1>
+
+<p>Created By: {{ punch.user }}</p>
+
+{% if punch.images.all %}
+    <h2>Images:</h2>
+    <div class="image-gallery">
+        {% for image in punch.images.all %}
+            <img src="{{ image.image.url }}" alt="Punch Image">
+        {% endfor %}
+    </div>
+{% endif %}
+
+<table>
+    <tr>
+        <td>{{ punch.description }}</td>
+    </tr>
+</table>
+
+
+<button type="button">
+    <a href="{% url 'punches' %}">Punchlist</a>
+</button>

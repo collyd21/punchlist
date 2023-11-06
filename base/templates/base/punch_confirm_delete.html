@@ -1,0 +1,9 @@
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete this Punch? "{{punch}}"</p>
+    <input type ="submit" value="Delete"/>
+</form>
+
+<button type="button">
+    <a href="{% url 'punches' %}">Punchlist</a>
+</button>
